@@ -4,7 +4,7 @@ int myX,myY,myColor1,myColor2,myColor3;
  {     
  	 
   	size(500,500);
-  	
+  	//frameRate(10);
   	
   	
  }   
@@ -18,11 +18,26 @@ int myX,myY,myColor1,myColor2,myColor3;
  			line(x,y,x,y);
  		}
  	}
- 	Bacteria pacman=new Bacteria(myX,myY);
+
+ 	/*Bacteria pacman=new Bacteria(myX,myY);
  	pacman.move();
  	pacman.show();
- 	Bacteria [] pacmans=new Bacteria
+ 	if(mousePressed){
+ 		myX=0;
+ 		myY=0;
+ 	}*/
+ 	Bacteria [] pacmans=new Bacteria[10];
+ 	for(int i=0;i<pacmans.length;i++){
+ 		pacmans[i]=new Bacteria(myX,myY);
+ 		pacmans[i].move();
+ 		pacmans[i].show();
+ 		if(mousePressed){
+ 			i++;
+ 		}
+ 	}
+ 	System.out.print(pacmans.length);
  }  	 
+
 class Bacteria    
  {  
  	Bacteria(int a,int b){
@@ -31,17 +46,19 @@ class Bacteria
  		myColor1=(int)(Math.random()*256);
  		myColor2=(int)(Math.random()*256);
  		myColor3=(int)(Math.random()*256);
+
  	}   
  	
  	void move(){
- 		myX=myX+(int)(Math.random()*4)-1;
- 		myY=myY+(int)(Math.random()*4)-1;
+ 		myX=myX+(int)(Math.random()*3)-1;
+ 		myY=myY+(int)(Math.random()*3)-1;
  		
 
  		
  	}   
  	void show(){
  		fill(myColor1,myColor2,myColor3);
- 		ellipse(myX,myY,20,20);
+ 		ellipse(myX%500+250,myY%500+250,20,20);
+
  	}
  }   
