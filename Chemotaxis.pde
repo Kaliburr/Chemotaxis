@@ -4,7 +4,7 @@ Bacteria [] pacmans;
  {     
   	size(500,500);
   	//frameRate(1000);
-  	pacmans=new Bacteria[1000];
+  	pacmans=new Bacteria[50];
  	for(int i=0;i<pacmans.length;i++){
  		pacmans[i]=new Bacteria();
  	}
@@ -30,35 +30,37 @@ Bacteria [] pacmans;
  		
  		pacmans[i].move();
  		pacmans[i].show();
- 		if(mousePressed){
- 			i++;
- 		}
+
  	}
  	//System.out.print(frameRate);
  }  	 
 
 class Bacteria    
  {  
- 	int myX,myY,myColor1,myColor2,myColor3;
+ 	int myX,myY,myColor1,myColor2,myColor3,a;
  	Bacteria(){
  		myX=250;
  		myY=250;
  		myColor1=(int)(Math.random()*256);
  		myColor2=(int)(Math.random()*256);
  		myColor3=(int)(Math.random()*256);
-
+ 		a=(int)(Math.random()*10)+1;
+ 		
  	}   
  	
  	void move(){
  		myX=myX+(int)(Math.random()*3)-1;
  		myY=myY+(int)(Math.random()*3)-1;
- 		
+ 		if(mousePressed){
+ 			a++;
+ 			
+ 		}
 
  		
  	}   
  	void show(){
  		fill(myColor1,myColor2,myColor3);
- 		ellipse(myX%500,myY%500,20,20);
+ 		ellipse(myX%500,myY%500,a%300,a%300);
 
  	}
  }   
